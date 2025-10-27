@@ -22,3 +22,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Swagger/API Docs
+/storage/api-docs
+api-docs.json
