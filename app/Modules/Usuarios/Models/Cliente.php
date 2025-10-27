@@ -10,7 +10,7 @@ class Cliente extends Usuario implements JWTSubject
 
     protected $primaryKey = 'id_cliente';
 
-     public $incrementing = false;
+    public $incrementing = false;
 
     public $timestamps = false;
 

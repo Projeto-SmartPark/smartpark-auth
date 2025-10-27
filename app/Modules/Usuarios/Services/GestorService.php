@@ -5,8 +5,8 @@ namespace App\Modules\Usuarios\Services;
 use App\Modules\Usuarios\Models\Gestor;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
-use Throwable;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class GestorService
 {

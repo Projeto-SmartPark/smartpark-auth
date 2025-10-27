@@ -5,8 +5,8 @@ namespace App\Modules\Usuarios\Services;
 use App\Modules\Usuarios\Models\Cliente;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
-use Throwable;
 use Illuminate\Support\Facades\Hash;
+use Throwable;
 
 class ClienteService
 {
@@ -39,7 +39,7 @@ class ClienteService
                 'id_cliente' => $usuarioId,
                 'nome' => $dados['nome'],
                 'email' => $dados['email'],
-                 'senha' => Hash::make($dados['senha']),
+                'senha' => Hash::make($dados['senha']),
             ]);
 
             DB::commit();
@@ -72,7 +72,7 @@ class ClienteService
 
         // Valida se o email não está sendo usado por outro cliente
         $this->validarEmailUnico($dados['email'], $id);
-       
+
         // Criptografa a nova senha antes de salvar
         $dados['senha'] = Hash::make($dados['senha']);
 

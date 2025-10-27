@@ -1,9 +1,9 @@
 <?php
 
+use App\Modules\Usuarios\Controllers\AuthController;
 use App\Modules\Usuarios\Controllers\ClienteController;
 use App\Modules\Usuarios\Controllers\GestorController;
 use App\Modules\Usuarios\Controllers\UsuariosController;
-use App\Modules\Usuarios\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -24,7 +24,6 @@ Route::prefix('auth')->group(function () {
 // Rotas protegidas (com token)
 // ============================
 Route::middleware('auth:api')->group(function () {
-
     // Autenticação
     Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::post('auth/refresh', [AuthController::class, 'refresh']);

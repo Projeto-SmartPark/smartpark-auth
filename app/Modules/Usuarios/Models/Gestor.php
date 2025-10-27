@@ -2,15 +2,13 @@
 
 namespace App\Modules\Usuarios\Models;
 
-use Tymon\JWTAuth\Contracts\JWTSubject;
-
 class Gestor extends Usuario
 {
     protected $table = 'gestores';
 
     protected $primaryKey = 'id_gestor';
 
-     public $incrementing = false;
+    public $incrementing = false;
 
     public $timestamps = false;
 
