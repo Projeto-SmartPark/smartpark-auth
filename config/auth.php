@@ -65,6 +65,11 @@ return [
             'model' => App\Modules\Usuarios\Models\Cliente::class,
         ],
 
+        'gestores' => [
+            'driver' => 'eloquent',
+            'model' => App\Modules\Usuarios\Models\Gestor::class,
+        ],
+
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

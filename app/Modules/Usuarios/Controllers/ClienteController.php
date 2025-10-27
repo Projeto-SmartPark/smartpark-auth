@@ -24,6 +24,7 @@ class ClienteController extends Controller
      *     path="/clientes",
      *     tags={"Clientes"},
      *     summary="Lista todos os clientes",
+     *     security={{"bearerAuth":{}}},
      *     description="Retorna uma lista com todos os clientes cadastrados no sistema",
      *
      *     @OA\Response(
@@ -56,6 +57,7 @@ class ClienteController extends Controller
      *     path="/clientes",
      *     tags={"Clientes"},
      *     summary="Cadastra um novo cliente",
+     *     security={{"bearerAuth": {}}},
      *     description="Cria um novo cliente no sistema",
      *
      *     @OA\RequestBody(
@@ -165,6 +167,7 @@ class ClienteController extends Controller
      *     path="/clientes/{id}",
      *     tags={"Clientes"},
      *     summary="Exibe um cliente específico",
+     *     security={{"bearerAuth": {}}},
      *     description="Retorna os dados detalhados de um cliente pelo ID",
      *
      *     @OA\Parameter(
@@ -220,6 +223,7 @@ class ClienteController extends Controller
      *     path="/clientes/{id}",
      *     tags={"Clientes"},
      *     summary="Atualiza dados de um cliente",
+     *     security={{"bearerAuth": {}}},
      *     description="Atualiza as informações de um cliente existente com validação de email único",
      *
      *     @OA\Parameter(
@@ -348,6 +352,7 @@ class ClienteController extends Controller
      *     path="/clientes/{id}",
      *     tags={"Clientes"},
      *     summary="Remove um cliente",
+     *     security={{"bearerAuth": {}}},
      *     description="Deleta um cliente do sistema",
      *
      *     @OA\Parameter(

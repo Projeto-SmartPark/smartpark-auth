@@ -23,6 +23,7 @@ class UsuariosController extends Controller
      *     path="/usuarios",
      *     tags={"Usuários"},
      *     summary="Lista todos os usuários",
+     *     security={{"bearerAuth":{}}},
      *     description="Retorna uma lista com todos os clientes e gestores cadastrados",
      *
      *     @OA\Response(
@@ -49,6 +50,7 @@ class UsuariosController extends Controller
      *     path="/usuarios",
      *     tags={"Usuários"},
      *     summary="Cadastra um novo usuário",
+     *     security={{"bearerAuth": {}}},
      *     description="Cria um novo cliente ou gestor no sistema",
      *
      *     @OA\RequestBody(
@@ -159,6 +161,7 @@ class UsuariosController extends Controller
      *     path="/usuarios/{id}",
      *     tags={"Usuários"},
      *     summary="Exibe um usuário específico",
+     *     security={{"bearerAuth": {}}},
      *     description="Retorna os dados detalhados de um usuário (cliente ou gestor)",
      *
      *     @OA\Parameter(
@@ -213,6 +216,7 @@ class UsuariosController extends Controller
      *     path="/usuarios/{id}",
      *     tags={"Usuários"},
      *     summary="Atualiza dados de um usuário",
+     *     security={{"bearerAuth": {}}},
      *     description="Atualiza as informações de um cliente ou gestor existente com validação de email único",
      *
      *     @OA\Parameter(
@@ -348,6 +352,7 @@ class UsuariosController extends Controller
      *     path="/usuarios/{id}",
      *     tags={"Usuários"},
      *     summary="Remove um usuário",
+     *     security={{"bearerAuth": {}}},
      *     description="Deleta um usuário e todos os seus dados vinculados (cliente ou gestor)",
      *
      *     @OA\Parameter(

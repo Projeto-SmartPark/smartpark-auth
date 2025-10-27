@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Rotas públicas (sem token)
 // ============================
 Route::prefix('auth')->group(function () {
+    Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
 });
 

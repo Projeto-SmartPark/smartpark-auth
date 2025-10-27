@@ -24,6 +24,7 @@ class GestorController extends Controller
      *     path="/gestores",
      *     tags={"Gestores"},
      *     summary="Lista todos os gestores",
+     *     security={{"bearerAuth":{}}},
      *     description="Retorna uma lista com todos os gestores cadastrados no sistema",
      *
      *     @OA\Response(
@@ -57,6 +58,7 @@ class GestorController extends Controller
      *     path="/gestores",
      *     tags={"Gestores"},
      *     summary="Cadastra um novo gestor",
+     *     security={{"bearerAuth": {}}},
      *     description="Cria um novo gestor no sistema",
      *
      *     @OA\RequestBody(
@@ -173,6 +175,7 @@ class GestorController extends Controller
      *     path="/gestores/{id}",
      *     tags={"Gestores"},
      *     summary="Exibe um gestor específico",
+     *     security={{"bearerAuth": {}}},
      *     description="Retorna os dados detalhados de um gestor pelo ID",
      *
      *     @OA\Parameter(
@@ -229,6 +232,7 @@ class GestorController extends Controller
      *     path="/gestores/{id}",
      *     tags={"Gestores"},
      *     summary="Atualiza dados de um gestor",
+     *     security={{"bearerAuth": {}}},
      *     description="Atualiza as informações de um gestor existente com validação de email único",
      *
      *     @OA\Parameter(
@@ -363,6 +367,7 @@ class GestorController extends Controller
      *     path="/gestores/{id}",
      *     tags={"Gestores"},
      *     summary="Remove um gestor",
+     *     security={{"bearerAuth": {}}},
      *     description="Deleta um gestor do sistema",
      *
      *     @OA\Parameter(
