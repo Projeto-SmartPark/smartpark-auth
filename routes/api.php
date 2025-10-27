@@ -1,6 +1,4 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Modules\Usuarios\UsuariosController;
-
-Route::get('/usuarios', [UsuariosController::class, 'index']);
+// Módulo de Acesso
+require app_path('Modules/Usuarios/routes.php');
