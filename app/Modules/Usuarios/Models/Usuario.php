@@ -8,7 +8,9 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 abstract class Usuario extends Authenticatable implements JWTSubject
 {
     protected $table = 'usuarios';
+
     protected $primaryKey = 'id_usuario';
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -29,7 +31,7 @@ abstract class Usuario extends Authenticatable implements JWTSubject
         // Inclui informações adicionais no token JWT
         return [
             'perfil' => $this->perfil ?? null,
-            'email'  => $this->email ?? null,
+            'email' => $this->email ?? null,
         ];
     }
 
