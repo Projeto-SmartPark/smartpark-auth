@@ -22,10 +22,6 @@ namespace App\Docs;
  *     name="Autenticação",
  *     description="Rotas responsáveis pelo login, logout, refresh e dados do usuário autenticado"
  * )
- * @OA\Tag(
- *     name="Usuários",
- *     description="CRUD de clientes e gestores, utilizados no fluxo de autenticação e controle de acesso"
- * )
  *
  * @OA\SecurityScheme(
  *     securityScheme="bearerAuth",
