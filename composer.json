@@ -61,10 +61,10 @@
             "@php artisan test"
         ],
         "lint": [
-        "./vendor/bin/pint"
+            "php vendor/bin/pint"
         ],
         "lint:test": [
-            "./vendor/bin/pint --test"
+            "php vendor/bin/pint --test"
         ],
         "format": [
             "@lint"
