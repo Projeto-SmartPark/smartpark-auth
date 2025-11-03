@@ -4,18 +4,14 @@ namespace App\Docs;
 
 /**
  * @OA\Info(
- *     title="SmartPark Auth API",
+ *     title="SmartPark API - Autenticação",
  *     version="1.0.0",
- *     description="API responsável pela autenticação e gerenciamento de usuários do SmartPark.
- *
- * Esta documentação permite autenticar-se via token JWT e testar rotas protegidas
- * (como listagem e atualização de usuários). Para isso, utilize o botão **Authorize**
- * localizado no canto superior direito e insira o token no formato: `Bearer {seu_token}`."
+ *     description="Documentação da API de autenticação do SmartPark.
+ * Esta documentação permite autenticar-se via token JWT e testar rotas protegidas (como listagem e atualização de usuários). Para isso, utilize o botão **Authorize** localizado no canto superior direito e insira o token."
  * )
  *
  * @OA\Server(
- *     url="http://127.0.0.1:9000/api",
- *     description="Servidor Local de Desenvolvimento (Auth Service)"
+ *     url="http://127.0.0.1:9000/api"
  * )
  *
  * @OA\Tag(
@@ -28,7 +24,7 @@ namespace App\Docs;
  *     type="http",
  *     scheme="bearer",
  *     bearerFormat="JWT",
- *     description="Insira o token JWT no formato: **Bearer {seu_token}**.
+ *     description="Insira o token JWT.
  * Este token é obtido através do endpoint `/api/auth/login`."
  * )
  */
