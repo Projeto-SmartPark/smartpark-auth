@@ -224,6 +224,7 @@ class AuthController extends Controller
         $dados = $request->validate([
             'email' => 'required|email|max:120',
             'senha' => 'required|string|min:6|max:100',
+            'perfil' => 'required|in:C,G',
         ], [
             'email.required' => 'O campo email é obrigatório.',
             'email.email' => 'O campo email deve ser um endereço de email válido.',
@@ -232,10 +233,14 @@ class AuthController extends Controller
             'senha.string' => 'O campo senha deve ser um texto.',
             'senha.min' => 'O campo senha deve ter no mínimo 6 caracteres.',
             'senha.max' => 'O campo senha não pode ter mais de 100 caracteres.',
+            'perfil.required' => 'O campo perfil é obrigatório.',
+            'perfil.in' => 'O campo perfil deve ser C (Cliente) ou G (Gestor).',
         ]);
 
-        $usuario = Cliente::where('email', $dados['email'])->first()
-            ?? Gestor::where('email', $dados['email'])->first();
+        // Busca apenas na tabela específica conforme o perfil informado
+        $usuario = $dados['perfil'] === 'C'
+            ? Cliente::where('email', $dados['email'])->first()
+            : Gestor::where('email', $dados['email'])->first();
 
         if (! $usuario || ! Hash::check($dados['senha'], $usuario->senha)) {
             return response()->json([
