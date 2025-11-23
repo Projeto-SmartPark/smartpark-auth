@@ -38,6 +38,7 @@ class Gestor extends Usuario
             'perfil' => 'G',
             'email' => $this->email,
             'cnpj' => $this->cnpj,
+            'nome' => $this->nome,
         ];
     }
 

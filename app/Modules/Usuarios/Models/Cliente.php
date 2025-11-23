@@ -38,6 +38,7 @@ class Cliente extends Usuario implements JWTSubject
         return [
             'perfil' => 'C',
             'email' => $this->email,
+            'nome' => $this->nome,
         ];
     }
 

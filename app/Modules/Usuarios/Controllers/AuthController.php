@@ -160,10 +160,11 @@ class AuthController extends Controller
      *         required=true,
      *
      *         @OA\JsonContent(
-     *             required={"email", "senha"},
+     *             required={"email", "senha", "perfil"},
      *
      *             @OA\Property(property="email", type="string", format="email", maxLength=120, example="joao@teste.com"),
-     *             @OA\Property(property="senha", type="string", minLength=6, maxLength=100, example="senha123")
+     *             @OA\Property(property="senha", type="string", minLength=6, maxLength=100, example="senha123"),
+     *             @OA\Property(property="perfil", type="string", enum={"C", "G"}, example="C", description="C = Cliente, G = Gestor")
      *         )
      *     ),
      *
@@ -306,13 +307,14 @@ class AuthController extends Controller
     public function me(): JsonResponse
     {
         try {
-            $usuario = JWTAuth::parseToken()->authenticate();
+            // Decodifica o payload do JWT sem fazer query no banco
+            $payload = JWTAuth::parseToken()->getPayload();
 
             return response()->json([
-                'id' => $usuario->getKey(),
-                'nome' => $usuario->nome,
-                'email' => $usuario->email,
-                'perfil' => $usuario instanceof Cliente ? 'C' : 'G',
+                'id' => $payload->get('sub'),
+                'nome' => $payload->get('nome'),
+                'email' => $payload->get('email'),
+                'perfil' => $payload->get('perfil'),
             ]);
         } catch (JWTException $e) {
             return response()->json([

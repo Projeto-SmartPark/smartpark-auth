@@ -11,7 +11,8 @@ namespace App\Docs;
  * )
  *
  * @OA\Server(
- *     url="http://127.0.0.1:9000/api"
+ *     url="http://localhost:9000/api",
+ *     description="Servidor de Autenticação (Local)"
  * )
  *
  * @OA\Tag(
