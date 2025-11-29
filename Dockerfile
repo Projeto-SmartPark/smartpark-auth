@@ -19,17 +19,20 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
+# GARANTIR QUE NENHUM .env LOCAL ENTRE NA IMAGEM
+RUN rm -f .env
+
 # Copiar código
 COPY . .
 
 # Instalar dependências
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Limpar cache
+# limpar cache
 RUN php artisan config:clear || true
 
-# Porta usada pelo Railway
+# Porta RailWay
 EXPOSE 8080
 
-# Iniciar o Laravel
+# Iniciar Laravel
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
