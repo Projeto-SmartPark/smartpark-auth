@@ -1,38 +1,24 @@
-FROM php:8.3-fpm
+FROM php:8.3-cli
 
-# Dependências do Laravel
+ARG CACHEBUSTER=1
+
 RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    curl \
-    libzip-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libonig-dev
+    zip unzip git \
+    libpng-dev libonig-dev libxml2-dev libzip-dev libicu-dev \
+    && docker-php-ext-install pdo pdo_mysql zip intl
 
-# Extensões PHP necessárias
-RUN docker-php-ext-install pdo pdo_mysql mbstring zip
-
-# Instalar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-# GARANTIR QUE NENHUM .env LOCAL ENTRE NA IMAGEM
-RUN rm -f .env
-
-# Copiar código
 COPY . .
 
-# Instalar dependências
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader
 
-# limpar cache
-RUN php artisan config:clear || true
+RUN chmod -R 775 storage bootstrap/cache
+RUN chown -R www-data:www-data storage bootstrap/cache
 
-# Porta RailWay
 EXPOSE 8080
 
-# Iniciar Laravel
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+CMD php artisan config:clear && \
+    php artisan serve --host=0.0.0.0 --port=8080
