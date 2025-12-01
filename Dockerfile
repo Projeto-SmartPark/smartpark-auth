@@ -19,34 +19,25 @@ RUN docker-php-ext-install pdo pdo_mysql mbstring zip
 # Instalar Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Criar pasta da aplicação
 WORKDIR /var/www
 
 # Copiar código
 COPY . .
 
-# Instalar dependências PHP
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Instalar dependências
+RUN composer install --no-dev --optimize-autoloader --prefer-dist
 
-# Remover .env local (para Railway usar envs próprias)
+# Remover .env local para usar variáveis do Railway
 RUN rm -f .env
 
-# ------------------------------
-# NGINX CONFIG
-# ------------------------------
+# Permissões
+RUN chown -R www-data:www-data storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache
 
-COPY ./deployment/nginx.conf /etc/nginx/nginx.conf
+# Copiar configs de produção
+COPY deployment/nginx.conf /etc/nginx/nginx.conf
+COPY deployment/supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
-# ------------------------------
-# SUPERVISOR CONFIG
-# ------------------------------
-COPY ./deployment/supervisor.conf /etc/supervisor/conf.d/supervisor.conf
-
-# Permissões storage
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
-
-# Porta do Railway
 EXPOSE 8080
 
 CMD ["supervisord", "-n"]
